@@ -1,6 +1,6 @@
 Please run command below:
 
-1. npm install init
+1. npm install
 2. http-server
 3. node index.js
 

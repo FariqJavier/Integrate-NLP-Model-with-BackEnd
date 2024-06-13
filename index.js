@@ -11,7 +11,7 @@ let labelEncoder = {};
 
 // Load the model
 async function loadModel() {
-    const modelUrl = 'http://127.0.0.1:8080/model_js/content/model.json';
+    const modelUrl = 'http://127.0.0.1:8080/model_js/natural_language_processing/model.json';
     
     console.log('Loading model from:', modelUrl);
     model = await tf.loadLayersModel(modelUrl);
@@ -28,7 +28,7 @@ function loadVocabulary() {
     // Check if vocab file exists
     if (fs.existsSync(vocabPath)) {
         vocabulary = JSON.parse(fs.readFileSync(vocabPath, 'utf8'));
-        console.log('Vocabulary loaded', vocabulary);
+        console.log('Vocabulary loaded');
     } else {
         console.error('Vocab file not found:', vocabPath);
     }
@@ -41,7 +41,7 @@ function loadLabelEncoder() {
     // Check if label_encoder file exists
     if (fs.existsSync(labelPath)) {
         labelEncoder = JSON.parse(fs.readFileSync(labelPath, 'utf8'));
-        console.log('Label Encoder loaded', labelEncoder);
+        console.log('Label Encoder loaded');
     } else {
         console.error('Label Encoder file not found:', labelPath);
     }
@@ -90,7 +90,7 @@ app.post('/predict', async (req, res) => {
         const predictedClass = prediction.argMax(-1).dataSync()[0];
         const decodedPredictedClass = decodePredictedClass(predictedClass)
 
-        res.json({ decodedPredictedClass });
+        res.json({ predictedLabel : decodedPredictedClass });
     } catch (error) {
         res.status(500).send(error.message);
     }

@@ -1,1 +1,5 @@
 node_modules/
+model_py/natural_language_processing/NLP_ipnyb.ipynb
+model_py/natural_language_processing/data/
+model_py/time_series/Time_Series_Weekly_And_Three_Days.ipynb
+model_py/time_series/data/
