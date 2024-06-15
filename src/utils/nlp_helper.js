@@ -49,7 +49,9 @@ function loadLabelEncoder() {
 function preprocessText(text) {
     // Remove numbers and extra spaces
     const cleanedText = text.replace(/\d+/g, '').replace(/\s+/g, ' ').trim();
-    return cleanedText;
+    // Remove letters and extra spaces, keep only numbers
+    const cleanedNumber = text.replace(/[a-zA-Z]+/g, '').replace(/\s+/g, ' ').trim();
+    return {cleanedText, cleanedNumber};
 }
 
 // Convert text to bag-of-words representation
