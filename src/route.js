@@ -21,6 +21,12 @@ function routes(app) {
         try { 
           await teksDataController.createNewTeksData(req, res) } catch (error) { }
       });
+
+      // Endpoint to get Last Week Data NLP
+     app.get('/nlp/data/:user_id', async (req, res) => {
+      try { 
+        await teksDataController.getLastWeekSpending(req, res) } catch (error) { }
+    });
   }
   
   module.exports = routes;

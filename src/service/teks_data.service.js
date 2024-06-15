@@ -69,10 +69,10 @@ class TeksDataService {
         }
         const lastTimestamp = lastTeksData.timestamp;
         const startOfLastWeek = moment(lastTimestamp).subtract(7, 'days').toDate();
-        
+
         const teksData = await TeksData.findAll({
           where: { 
-            user_id: username,
+            user_id: user_id,
             timestamp: {
                 [Op.gte]: startOfLastWeek,
                 [Op.lt]: lastTimestamp,

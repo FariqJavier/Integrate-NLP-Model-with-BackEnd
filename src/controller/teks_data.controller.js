@@ -36,6 +36,22 @@ class TeksDataController {
             logger.error(`Failed to create New Teks Data for User:`, error)
         }
     }
+
+    async getLastWeekSpending(req, res) {
+        try {
+
+            const { user_id } = req.params;
+            const teksData = await this.teksDataService.getLastWeekTeksDataByUserId( user_id );
+
+            logger.info(`Last Week Teks Data for User '${user_id}' has been found`);
+            res.status(201).json({
+                message: `Last Week Teks Data for User '${user_id}' has been found`,
+                data: teksData
+            })
+        } catch (error) {
+            logger.error(`Failed to get Last Week Teks Data for User:`, error)
+        }
+    }
 }
 
 module.exports = TeksDataController;
